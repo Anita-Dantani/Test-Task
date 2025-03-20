@@ -1,0 +1,258 @@
+{
+  "article": [],
+  "blog": [],
+  "brand": [],
+  "collection": [],
+  "company": [],
+  "company_location": [],
+  "location": [],
+  "market": [],
+  "order": [],
+  "page": [],
+  "product": [
+    {
+      "key": "color-pattern",
+      "namespace": "shopify",
+      "name": "Color",
+      "description": "Defines the primary color or pattern, such as blue or striped",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    }
+  ],
+  "variant": [
+    {
+      "key": "fee_cost",
+      "namespace": "app--109481721857--cdl_pf",
+      "name": "FeeBee Fee Cost",
+      "description": null,
+      "type": {
+        "name": "money",
+        "category": "MONEY"
+      }
+    },
+    {
+      "key": "fee_cost_percentage",
+      "namespace": "app--109481721857--cdl_pf",
+      "name": "FeeBee Fee Percentage",
+      "description": null,
+      "type": {
+        "name": "number_decimal",
+        "category": "NUMBER"
+      }
+    },
+    {
+      "key": "fee_reference",
+      "namespace": "app--109481721857--cdl_pf",
+      "name": "FeeBee Fee Reference",
+      "description": null,
+      "type": {
+        "name": "variant_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "fee_all_markets",
+      "namespace": "app--109481721857--cdl_pf",
+      "name": "FeeBee Fee All Markets",
+      "description": null,
+      "type": {
+        "name": "boolean",
+        "category": "TRUE_FALSE"
+      }
+    },
+    {
+      "key": "fee_markets",
+      "namespace": "app--109481721857--cdl_pf",
+      "name": "FeeBee Fee Markets",
+      "description": null,
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    }
+  ],
+  "shop": [
+    {
+      "key": "fee-configurations",
+      "namespace": "app--109481721857--cdl_pf",
+      "name": "FeeBee Collection Fee Configurations",
+      "description": null,
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    },
+    {
+      "key": "data",
+      "namespace": "app--8430878721--qikify_checkout",
+      "name": "Data",
+      "description": null,
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    },
+    {
+      "key": "custom_script",
+      "namespace": "app--8430878721--qikify_checkout",
+      "name": "Custom Script",
+      "description": null,
+      "type": {
+        "name": "multi_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "custom_style",
+      "namespace": "app--8430878721--qikify_checkout",
+      "name": "Custom Style",
+      "description": null,
+      "type": {
+        "name": "multi_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "product_offers_translation",
+      "namespace": "app--8430878721--qikify_checkout",
+      "name": "Product Offers Translation",
+      "description": null,
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    },
+    {
+      "key": "custom_fields_translation",
+      "namespace": "app--8430878721--qikify_checkout",
+      "name": "Custom Fields Translation",
+      "description": null,
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    },
+    {
+      "key": "custom_cart_translation",
+      "namespace": "app--8430878721--qikify_checkout",
+      "name": "Custom Cart Translation",
+      "description": null,
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    },
+    {
+      "key": "custom_banner_translation",
+      "namespace": "app--8430878721--qikify_checkout",
+      "name": "Custom Banner Translation",
+      "description": null,
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    },
+    {
+      "key": "reward_bar_translation",
+      "namespace": "app--8430878721--qikify_checkout",
+      "name": "Reward Bar Translation",
+      "description": null,
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    },
+    {
+      "key": "trusted_badges_translation",
+      "namespace": "app--8430878721--qikify_checkout",
+      "name": "Trusted Badges Translation",
+      "description": null,
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    },
+    {
+      "key": "testimonials_translation",
+      "namespace": "app--8430878721--qikify_checkout",
+      "name": "Testimonials Translation",
+      "description": null,
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    },
+    {
+      "key": "custom_buttons_translation",
+      "namespace": "app--8430878721--qikify_checkout",
+      "name": "Custom Buttons Translation",
+      "description": null,
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    },
+    {
+      "key": "add_ons_translation",
+      "namespace": "app--8430878721--qikify_checkout",
+      "name": "Add Ons Translation",
+      "description": null,
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    },
+    {
+      "key": "payment_icons_translation",
+      "namespace": "app--8430878721--qikify_checkout",
+      "name": "Payment Icons Translation",
+      "description": null,
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    },
+    {
+      "key": "pp_custom_banner_translation",
+      "namespace": "app--8430878721--qikify_checkout",
+      "name": "Pp Custom Banner Translation",
+      "description": null,
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    },
+    {
+      "key": "pp_trusted_badges_translation",
+      "namespace": "app--8430878721--qikify_checkout",
+      "name": "Pp Trusted Badges Translation",
+      "description": null,
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    },
+    {
+      "key": "pp_custom_buttons_translation",
+      "namespace": "app--8430878721--qikify_checkout",
+      "name": "Pp Custom Buttons Translation",
+      "description": null,
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    },
+    {
+      "key": "pp_custom_fields_translation",
+      "namespace": "app--8430878721--qikify_checkout",
+      "name": "Pp Custom Fields Translation",
+      "description": null,
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    }
+  ]
+}
