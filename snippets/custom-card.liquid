@@ -1,0 +1,139 @@
+<div class="product-container">
+<div class="inline-flex justify-center items-center">
+    <div class="bg-white rounded-xl shadow-lg p-5 text-left">
+        <div class="relative border border-gray-300 p-[20px] rounded-lg">
+            {% if product.tags contains "On Sale" %}
+                <span class="absolute top-8 left-8 bg-white text-red-500 text-xs font-bold px-4 py-2 border border-red-500 rounded-full">
+                    On Sale!
+                </span>
+            {% endif %}
+            
+            {% assign first_variant = product.variants.first %}
+            {% assign first_image = first_variant.image | img_url: 'master' %}
+            {% assign hover_image = '' %}
+
+            {% for image in product.images %}
+                {% if image.alt contains first_variant.title and image.alt contains 'secondary' %}
+                    {% assign hover_image = image | img_url: 'master' %}
+                {% endif %}
+            {% endfor %}
+
+            <img id="productImage" src="{{ first_image }}" alt="Product"
+                class="object-contains transition-all duration-300 h-[204px] w-[185px] "
+                data-original="{{ first_image }}"
+                data-hover="{{ hover_image }}">
+        </div>
+
+        <!-- Color Selector -->
+        <div class="flex gap-3 my-6" id="colorSelector">
+            {% for variant in product.variants %}
+                {% assign color = variant.option1 | downcase %}
+                {% assign variant_image = variant.image | img_url: 'master' %}
+                {% assign hover_image = '' %}
+                {% assign full_string = color | append: "-secondary" %}
+
+                {% for image in product.images %}
+                    {% if image.alt contains full_string %}
+                        {% assign hover_image = image | img_url: 'master' %}
+                    {% endif %}
+                {% endfor %}
+
+                <label class="cursor-pointer h-[20px]">
+                    <input type="radio" name="variant_id" value="{{ variant.id }}" class="hidden variant-selector"
+                        data-image="{{ variant_image }}"
+                        data-hover="{{ hover_image }}"
+                        data-price="{{ variant.price | money }}"
+                        data-compare="{{ variant.compare_at_price | money }}"
+                        {% if forloop.first %}checked{% endif %}>
+                    <span class="w-[20px] h-[20px] rounded-full inline-block border border-gray-300"
+                        style="background: {{ variant.title }}"></span>
+                </label>
+            {% endfor %}
+        </div>
+        <div class="text-xl text-gray-600">{{ product.vendor }}</div>
+        <div class="text-2xl font-bold text-[#0A4874]">{{ product.title }}</div>
+        <!-- Product Price -->
+        <div class="text-lg my-2">
+            {% if product.compare_at_price > product.price %}
+                <span id="compareAtPrice" class="line-through text-[#111111] text-[14px]">{{ product.compare_at_price | money }}</span>
+            {% endif %}
+            <span id="productPrice" class="text-[#FF0000] text-[14px] ml-2">{{ product.variants.first.price | money }}</span>
+        </div>
+
+        <!-- Add to Cart Button -->
+        <form method="post" action="/cart/add">
+            <input type="hidden" name="id" id="selectedVariantId" value="{{ product.variants.first.id }}">
+            <button type="submit"
+                class="bg-[#0A4874] cursor-pointer text-white px-4 py-2 rounded-lg w-full hover:bg-[#083a5f] transition">
+                Add to Cart
+            </button>
+        </form>
+    </div>
+</div>
+</div>
+
+<script>
+ document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".product-container").forEach((productContainer) => {
+        const productImage = productContainer.querySelector("#productImage");
+        const priceElement = productContainer.querySelector("#productPrice");
+        const selectedVariantInput = productContainer.querySelector("#selectedVariantId");
+        const compareAtPriceElement = productContainer.querySelector("#compareAtPrice");
+        const colorOptions = productContainer.querySelectorAll(".variant-selector");
+
+        /**
+         * Updates the product display when a variant is selected
+         * @param {HTMLElement} option - The selected radio input
+         */
+        const updateProductDisplay = (option) => {
+            productContainer.querySelectorAll("#colorSelector span").forEach(span =>
+                span.classList.remove("outline", "outline-offset-1", "outline-[#0A4874]")
+            );
+
+            option.nextElementSibling.classList.add("outline", "outline-offset-1", "outline-[#0A4874]");
+
+            const newImage = option.dataset.image;
+            const newHoverImage = option.dataset.hover;
+            const newPrice = option.dataset.price;
+            const newCompareAtPrice = option.dataset.compare;
+            const newVariantId = option.value;
+
+            productImage.src = newImage;
+            productImage.dataset.original = newImage;
+            productImage.dataset.hover = newHoverImage || "";
+
+            priceElement.innerText = newPrice;
+            selectedVariantInput.value = newVariantId;
+
+            if (compareAtPriceElement) {
+                if (newCompareAtPrice && parseFloat(newCompareAtPrice.replace(/[^0-9.]/g, "")) > parseFloat(newPrice.replace(/[^0-9.]/g, ""))) {
+                    compareAtPriceElement.innerText = newCompareAtPrice;
+                    compareAtPriceElement.classList.remove("hidden");
+                } else {
+                    compareAtPriceElement.classList.add("hidden");
+                }
+            }
+        };
+
+        if (colorOptions.length > 0) {
+            updateProductDisplay(colorOptions[0]);
+            colorOptions[0].checked = true;
+        }
+
+        colorOptions.forEach(option => {
+            option.addEventListener("change", () => updateProductDisplay(option));
+        });
+
+        productImage.addEventListener("mouseover", () => {
+            if (productImage.dataset.hover) {
+                productImage.src = productImage.dataset.hover;
+            }
+        });
+
+        productImage.addEventListener("mouseout", () => {
+            productImage.src = productImage.dataset.original;
+        });
+    });
+});
+
+</script>
